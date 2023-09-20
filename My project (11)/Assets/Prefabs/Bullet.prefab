@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 50
   rb: {fileID: 3017127986844562240}
+  enemie: {fileID: 5443136579814356191, guid: 36beb720403f94047aa35e2e2ab67968, type: 3}
 --- !u!54 &3017127986844562240
 Rigidbody:
   m_ObjectHideFlags: 0

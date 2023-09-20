@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public Transform firePoint;
 
     [SerializeField] private float firingRate = 1f;
+
+    public Transform sniperr;
+    public GameObject sniper;
     private float timer = 0f;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        Vector3 moveDir = new Vector3(horizontalInput, 0, -1f);
+        Vector3 moveDir = new Vector3(horizontalInput, 0, 0);
         transform.Translate(moveDir*speed*Time.deltaTime);
 
         timer += Time.deltaTime;
@@ -38,5 +41,5 @@ public class PlayerMovement : MonoBehaviour
     {
         Instantiate(bullet, firePoint.transform.position,Quaternion.identity);
     }
-
+   
 }
