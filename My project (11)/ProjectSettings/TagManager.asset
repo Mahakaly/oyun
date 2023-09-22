@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Sniper
   - Mage
+  - Gate
+  - MageGate
   layers:
   - Default
   - TransparentFX
