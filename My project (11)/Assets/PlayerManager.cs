@@ -36,6 +36,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         MoveThePlayer();
+        
     }
     void MoveThePlayer()
     {
@@ -81,7 +82,7 @@ public class PlayerManager : MonoBehaviour
             road.Translate(road.right * Time.deltaTime * -roadSpeed); 
         }
     }
-    private void FormatStickMan()
+    public void FormatStickMan()
     {
         for (int i = 0; i < player1.childCount; i++)
         {
@@ -92,7 +93,17 @@ public class PlayerManager : MonoBehaviour
 
             player1.transform.GetChild(i).DOLocalMove(NewPos, 1f).SetEase(Ease.OutBack);
         }
+        StartCoroutine(Death());      
     }
+   
+
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(2);
+        FormatStickMan();
+    }
+
+
     private void MakeStickMan(int numner)
     {
         for (int i = 0; i < numner; i++)
@@ -142,6 +153,7 @@ public class PlayerManager : MonoBehaviour
                 MageStickMan(CountChar+gateManager.randomNumber);
             }
         }
+        
 
     }
 }
