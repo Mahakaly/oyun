@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     private Vector3 mouseStartPos,playerStartPos;
     public float playerSpeed,roadSpeed;
     private Camera cam;
+    
 
     [SerializeField] private Transform road;
 
@@ -153,6 +154,7 @@ public class PlayerManager : MonoBehaviour
                 MageStickMan(CountChar+gateManager.randomNumber);
             }
         }
+     
         
 
     }
