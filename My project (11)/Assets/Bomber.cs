@@ -19,9 +19,9 @@ public class Bomber : MonoBehaviour
 
     private void Start()
     {
-        timer= Time.time;
-       // targetTransform = GameObject.FindGameObjectWithTag("bombtransa").transform;
-        
+        timer = Random.Range(0f, firingRate);
+        // targetTransform = GameObject.FindGameObjectWithTag("bombtransa").transform;
+
     }
 
     private void Update()
