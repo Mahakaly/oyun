@@ -11,6 +11,10 @@ TagManager:
   - MageGate
   - Koko
   - Character
+  - bombtransa
+  - FxTemporaire
+  - Ground
+  - secondWaveSpawner
   layers:
   - Default
   - TransparentFX

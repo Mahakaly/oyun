@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject stickman;
     [SerializeField] private GameObject stickman1;
     [SerializeField] private GameObject stickman2;
+
+    public GameObject secondWaveOpen;
    
     //***********************************
 
@@ -38,6 +40,12 @@ public class PlayerManager : MonoBehaviour
     {
         MoveThePlayer();
         
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                secondWaveOpen.SetActive(true);
+            }
+        
+
     }
     void MoveThePlayer()
     {
@@ -154,6 +162,7 @@ public class PlayerManager : MonoBehaviour
                 MageStickMan(CountChar+gateManager.randomNumber);
             }
         }
+       
      
         
 
