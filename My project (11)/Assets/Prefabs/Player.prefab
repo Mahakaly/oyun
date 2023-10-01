@@ -3572,7 +3572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingRate: 1
-  bulletPrefab: {fileID: 4090856074422611392, guid: 814188c248f76344aa81f97c5648723f, type: 3}
+  bulletPrefab: {fileID: 5945994641940218772, guid: dbb11cd7b0b9c5e46b7a1eae15ea7133, type: 3}
   firePoint: {fileID: 1418025052}
 --- !u!4 &4372136709927502157 stripped
 Transform:

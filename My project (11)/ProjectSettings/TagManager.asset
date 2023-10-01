@@ -15,6 +15,9 @@ TagManager:
   - FxTemporaire
   - Ground
   - secondWaveSpawner
+  - Tank
+  - Freezing
+  - BomberGate
   layers:
   - Default
   - TransparentFX
