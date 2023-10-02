@@ -45,10 +45,7 @@ public class PlayerManager : MonoBehaviour
     {
         MoveThePlayer();
         
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                secondWaveOpen.SetActive(true);
-            }
+            
         MoveTheRoad();
 
     }
