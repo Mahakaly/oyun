@@ -82,7 +82,7 @@ public class PlayerManager : MonoBehaviour
                 if(CountChar>15)
                     control.z = Mathf.Clamp(control.z, -2.50f, 3.10f);
                 else
-                    control.z = Mathf.Clamp(control.z, -4, 4.50f);
+                    control.z = Mathf.Clamp(control.z, -4, 3f);
 
 
                 transform.position=new Vector3(transform.position.x,transform.position.y,Mathf.Lerp(transform.position.z,control.z,Time.deltaTime*playerSpeed));
