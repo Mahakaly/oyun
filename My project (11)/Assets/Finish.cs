@@ -33,7 +33,7 @@ public class Finish : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         spawner.SetActive(false);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         playerManager.roadMoving = false;
         
         yield return new WaitForSeconds(2f);
