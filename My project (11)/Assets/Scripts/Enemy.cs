@@ -63,14 +63,16 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject) ;
         }
-        if (collision.gameObject.CompareTag("Freezing"))
+       
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Freezing"))
         {
-            agent.speed =- 1;
+            agent.speed = -1;
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        agent.speed += 1;
-    }
+  
 
 }
