@@ -151,6 +151,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.CompareTag("Gate"))
         {
+
             collision.transform.parent.GetChild(0).GetComponent<BoxCollider>().enabled = false;
             collision.transform.parent.GetChild(1).GetComponent<BoxCollider>().enabled = false;
 
@@ -166,6 +167,7 @@ public class PlayerManager : MonoBehaviour
                 
 
             }
+            collision.transform.parent.gameObject.SetActive(false);
         }
         if (collision.CompareTag("MageGate"))
         {

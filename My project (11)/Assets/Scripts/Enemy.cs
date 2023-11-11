@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public int health=1;
     //public float speed;
    // public float rotationSpeed = 40f;
-   // public float detectionRange = 1f;
+    public float detectionRange = 1f;
     public Transform target;
     private NavMeshAgent agent;
 
@@ -25,10 +25,24 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(target != null)
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+        if (distanceToTarget>detectionRange) 
+        {
+        agent.SetDestination(new Vector3(1,0,0));
+        }
+        else if(target !=null)
         {
             agent.SetDestination(target.position);
         }
+      
+
+      /*  if (target = null)
+        {
+        
+            agent.SetDestination(target.position);
+            
+        }*/
        /*if(target != null) {
             float distanceToTarget = Vector3.Distance(transform.position, target.position); 
             if(distanceToTarget <= rotationSpeed) { 

@@ -343,7 +343,7 @@ MonoBehaviour:
   rb: {fileID: 3683193831185184731}
   enemie: {fileID: 0}
   damageAmount: 1
-  bulletLifeTime: 0.3
+  bulletLifeTime: 0.2
 --- !u!1 &7259533072457704959
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ TagManager:
   - Tank
   - Freezing
   - BomberGate
+  - Boxes
   layers:
   - Default
   - TransparentFX

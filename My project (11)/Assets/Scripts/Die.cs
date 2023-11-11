@@ -22,7 +22,11 @@ public class Die : MonoBehaviour
             Death();
            
 
-        } 
+        }
+        if (other.gameObject.CompareTag("Boxes"))
+        {
+            Death();
+        }
     }
    public void Death()
     {

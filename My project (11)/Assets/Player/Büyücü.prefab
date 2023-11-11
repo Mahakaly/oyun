@@ -2281,7 +2281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391d898f0946a3d4ea8a730b0c05510f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellPrefab: {fileID: 4932088507883938021, guid: 64210bbc8e31f7849b995f57c80c3172, type: 3}
+  spellPrefab: {fileID: 161766660727748596, guid: 05ce920d629922a4eb4795ef7494ce5c, type: 3}
   castInterval: 5
   spellTo: {fileID: 0}
 --- !u!95 &-2032656225180456079
