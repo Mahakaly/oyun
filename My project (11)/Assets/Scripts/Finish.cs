@@ -8,7 +8,7 @@ public class Finish : MonoBehaviour
     [SerializeField] private GameObject spawner;
  
 
-    [SerializeField] private GameObject finishText;
+    
 
      public PlayerManager playerManager;
 

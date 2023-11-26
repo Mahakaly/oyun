@@ -7,24 +7,34 @@ using DG.Tweening.Core.Easing;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Transform player1;
-    public Transform magePl;
-    private int CountChar;
-    [SerializeField] private GameObject stickman;
-    [SerializeField] private GameObject stickman1;
-    [SerializeField] private GameObject stickman2;
+    [SerializeField] private Transform player1;
 
-    public GameObject secondWaveOpen;
+    [SerializeField] private Transform magePl;
+
+    private int characterCount;
+
+    [SerializeField] private GameObject gunner;
+    [SerializeField] private GameObject Mage;
+    [SerializeField] private GameObject bomber;
+
+    
 
     [SerializeField] TMP_Text gateText;
+
+    private GameManager gameManager;
+
     //***********************************
 
     [Range(0f, 1f)] [SerializeField] private float DistanceFactor, Radius;
 
     public bool moveByTouch, gameState;
+
     private Vector3 mouseStartPos,playerStartPos;
+
     public float playerSpeed,roadSpeed;
+
     private Camera cam;
+
     public bool roadMoving = true;
 
     [SerializeField] private Transform road;
@@ -34,7 +44,8 @@ public class PlayerManager : MonoBehaviour
     {
         player1 = transform;
 
-        CountChar = transform.childCount - 1;
+        characterCount = transform.childCount - 1;
+
         cam = Camera.main;
 
    
@@ -56,30 +67,39 @@ public class PlayerManager : MonoBehaviour
             moveByTouch= true;
 
             var plane = new Plane(Vector3.up, 0f);
+
             var ray = cam.ScreenPointToRay(Input.mousePosition);
 
             if(plane.Raycast(ray,out var distance))
             {
                 mouseStartPos = ray.GetPoint(distance + 1f);
+
                 playerStartPos = transform.position;
             }
         }
+
         if (Input.GetMouseButtonUp(0))
         {
             moveByTouch = false;
         }
+
         if(moveByTouch)
         {
             var plane = new Plane(Vector3.up, 0f);
+
             var ray = cam.ScreenPointToRay(Input.mousePosition);
-            if(plane.Raycast(ray,out var distance
-                    ))
+
+            if(plane.Raycast(ray,out var distance))
             {
+
                 var mousePos = ray.GetPoint(distance + 1f);
+
                 var move = mousePos - mouseStartPos;
+
                 var control = playerStartPos + move;
 
-                if(CountChar>15)
+
+                if(characterCount>15)
                     control.z = Mathf.Clamp(control.z, -8, -2f);
                 else
                     control.z = Mathf.Clamp(control.z, -8, -2f);
@@ -102,6 +122,7 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < player1.childCount; i++)
         {
             var x = DistanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i * Radius);
+
             var z = DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i * Radius);
 
             var NewPos=new Vector3(x,-0.79f,z);
@@ -115,6 +136,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator Death()
     {
         yield return new WaitForSeconds(2);
+
         FormatStickMan();
     }
 
@@ -123,18 +145,20 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < numner; i++)
         {
-            Instantiate(stickman, transform.position, player1.transform.rotation,transform);
+            Instantiate(gunner, transform.position, player1.transform.rotation,transform);
         }
-        CountChar = transform.childCount - numner;
+        characterCount = transform.childCount - numner;
+
         FormatStickMan();
     }
     private void MageStickMan(int number)
     {
         for (int i = 0; i < number; i++)
         {
-            Instantiate(stickman1,transform.position, player1.transform.rotation,transform);
+            Instantiate(Mage,transform.position, player1.transform.rotation,transform);
         }
-        CountChar=transform.childCount - number;
+        characterCount=transform.childCount - number;
+
         FormatStickMan();
     }
     
@@ -142,58 +166,66 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < number; i++)
         {
-            Instantiate(stickman2,transform.position, player1.transform.rotation,transform);
+            Instantiate(bomber,transform.position, player1.transform.rotation,transform);
         }
-        CountChar=transform.childCount - number;
+        characterCount=transform.childCount - number;
+
         FormatStickMan();
     }
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Gate"))
         {
+           
 
             collision.transform.parent.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+
             collision.transform.parent.GetChild(1).GetComponent<BoxCollider>().enabled = false;
 
             var gateManager = collision.GetComponent<GateManager>();
-            if (gateManager.multiply) {
-                MakeStickMan(gateManager.randomNumber);
-                
 
+            if (gateManager.multiply) 
+            {
+                MakeStickMan(Random.Range(gateManager.randomMax, gateManager.randomMin));
+                
             }
             else
             {
-                MakeStickMan( gateManager.randomNumber);
-                
-
+                MakeStickMan(gateManager.randomNumber);
             }
             collision.transform.parent.gameObject.SetActive(false);
-        }
+            }
+        
+
         if (collision.CompareTag("MageGate"))
+
         {
             collision.transform.parent.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+
             collision.transform.parent.GetChild(1).GetComponent<BoxCollider>().enabled = false;
 
             var gateManager = collision.GetComponent<GateManager>();
+
             if(gateManager.multiply)
             {
                 MageStickMan( gateManager.randomNumber);
-               
-
             }
             else
             {
                 MageStickMan(gateManager.randomNumber);
-                
-
             }
+            collision.transform.parent.gameObject.SetActive(false);
+
         }
+
         if (collision.CompareTag("BomberGate"))
         {
             collision.transform.parent.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+
             collision.transform.parent.GetChild(1).GetComponent<BoxCollider>().enabled = false;
 
             var gateManager = collision.GetComponent<GateManager>();
+
             if (gateManager.multiply)
             {
                 bomberStickMan(gateManager.randomNumber);
@@ -202,10 +234,14 @@ public class PlayerManager : MonoBehaviour
             {
                 bomberStickMan(gateManager.randomNumber);
             }
+            collision.transform.parent.gameObject.SetActive(false);
+
         }
+        if (collision.CompareTag("GoldGate"))
+        {
+            GameManager.Instance.GetMoney();
 
-
-
+        }
 
     }
 }

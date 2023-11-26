@@ -19,6 +19,8 @@ TagManager:
   - Freezing
   - BomberGate
   - Boxes
+  - WallTrap
+  - GoldGate
   layers:
   - Default
   - TransparentFX

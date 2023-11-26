@@ -7,9 +7,13 @@ public class GateManager : MonoBehaviour
 {
     public int randomNumber;
     public bool multiply;
+
     public int numberToString;
     public string GateText;
     [SerializeField] private TMP_Text gateText =null;
+
+    public int randomMax;
+    public int randomMin;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +22,14 @@ public class GateManager : MonoBehaviour
         if(multiply)
         {
             randomNumber = numberToString;
-            gateText.text = "+" + randomNumber.ToString() + "\n" + GateText;
+            // gateText.text = "+" + randomNumber.ToString() + "\n" + GateText;
+            gateText.text = "?";
 
         }
         else
         {
             randomNumber = numberToString;
             gateText.text = "+" + randomNumber.ToString() + "\n" + GateText;
-
-
-
 
         }
     }

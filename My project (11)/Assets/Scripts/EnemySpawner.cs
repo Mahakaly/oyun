@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time >= nextSpawnTime)
         {
             Instantiate(enemyPrefab, new Vector3(Random.Range(-200,-200),Random.Range(0.8f,0.8f),Random.Range(0f,-10f)), transform.rotation,transform);
-            nextSpawnTime = Time.time + spawnRate;
+            nextSpawnTime = Time.time + 1f/ spawnRate;
         }
     }
   
